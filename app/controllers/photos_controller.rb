@@ -12,8 +12,10 @@ class PhotosController < ApplicationController
   end
 
   def create_row
-    @the_caption = params[:the_caption]
-    @the_source = params[:the_source]
+    @zebra = Photo.new
+    @zebra.caption = params[:the_caption]
+    @zebra.source = params[:the_source]
+    @zebra.save
   end
 
   def destroy
@@ -26,6 +28,10 @@ class PhotosController < ApplicationController
   end
 
   def update_row
+    @zebra = Photo.find(params[:id])
+    @zebra.caption = params[:the_caption]
+    @zebra.source = params[:the_source]
+    @zebra.save
   end
 
 end
